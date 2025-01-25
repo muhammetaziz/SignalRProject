@@ -17,6 +17,7 @@ namespace SignalR.EntityLayer.Entities
 
 
         public int CategoryID { get; set; }
-       // public Category Category { get; set; }= new Category();
+        public Category Category { get; set; } 
+        // public Category Category { get; set; }= new Category();
     }
 }
