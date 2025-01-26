@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.ContactDto;
@@ -11,16 +12,19 @@ namespace SignalR.Api.Controllers
     public class ContactController : ControllerBase
     {
         private readonly IContactService _contactService;
+        private readonly IMapper _mapper;
 
-        public ContactController(IContactService contactService)
+        public ContactController(IContactService contactService, IMapper mapper)
         {
             _contactService = contactService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult ListContact()
         {
-            var value = _contactService.TGetListAll();
+            
+            var value =_mapper.Map<List<ResultContactDto>>( _contactService.TGetListAll());
             return Ok(value);
         }
         [HttpPost]

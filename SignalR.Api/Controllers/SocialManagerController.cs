@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.DtoLayer.SocialMediaDto;
@@ -11,15 +12,18 @@ namespace SignalR.Api.Controllers
     public class SocialManagerController : ControllerBase
     {
         private readonly ISocialMediaService _socialMediaService;
+        private readonly IMapper _mapper;
 
-        public SocialManagerController(ISocialMediaService socialMediaService)
+        public SocialManagerController(ISocialMediaService socialMediaService, IMapper mapper)
         {
             _socialMediaService = socialMediaService;
+            _mapper = mapper;
         }
+
         [HttpGet]
         public IActionResult ListSocialMedia()
         {
-            var value = _socialMediaService.TGetListAll();
+            var value =_mapper.Map<List<ResultSocialMediaDto>>(_socialMediaService.TGetListAll());
             return Ok(value);
         }
         [HttpPost]
