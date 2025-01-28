@@ -1,8 +1,61 @@
-﻿
+﻿@model List<SignalR.WebUI.DTOs.CategoryDtos.ResultCategoryDto>
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/AdminLayoutController/Index.cshtml";
+    ViewData["Title"] = "Kategori Listesi";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
 }
+ 
+<div class="container-fluid">
+    <h4 class="page-title">Kategori Modülü</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Kategori Listesi
+                    
+                    <a href="/Category/CreateCategory/"  class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-head-bg-primary mt-4 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Ad</th>
+                                <th scope="col">Durum</th>
+                                <th width="11%" scope="col">Seçenekler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.CategoryID</th>
+                                    <td>@item.CategoryID</td>
+                                    <td>@item.Name</td>
+                                    <td>@(item.Status ? "Aktif" : "Pasif")</td>
+                                    <td>
+                                        <a 
+                                           href="/Category/UpdateCategory/"
+                                           class="btn btn-warning btn-sm" title="Düzenle">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
 
-<h1>Index</h1>
+                                        <a class="btn btn-info btn-sm" title="Detaylar">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
 
+                                        <a href="/Category/DeleteCategory/@item.CategoryID/"
+                                           class="btn btn-danger btn-sm" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

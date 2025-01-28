@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+} 
+<!DOCTYPE html>
+<html>
+@await Component.InvokeAsync("LayoutHeaderPartialComponent")
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <div class="logo-header">
+                <a href="index.html" class="logo">
+                    SignalRAdmin
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+            </div>
+            @await Component.InvokeAsync("LayoutNavbarPartialComponent")
+        </div>
+        @await Component.InvokeAsync("LayoutSidebarPartialComponent")
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div> 
+        @await Component.InvokeAsync("LayoutFooterPartialComponent")
+    </div>  
+</body>
+</html>  
+@await Component.InvokeAsync("LayoutScriptsPartialComponent")
