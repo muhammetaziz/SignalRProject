@@ -44,7 +44,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContact(int id)
         {
             var value = _contactService.TGetById(id);
@@ -72,7 +72,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetContact")]
+        [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
             var value = _contactService.TGetById(id);

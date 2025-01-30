@@ -44,7 +44,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             var value = _categoryService.TGetById(id);
@@ -73,7 +73,7 @@ namespace SignalR.Api.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var value = _categoryService.TGetById(id);

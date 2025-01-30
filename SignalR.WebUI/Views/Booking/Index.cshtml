@@ -1,28 +1,32 @@
-﻿@model List<SignalR.WebUI.DTOs.CategoryDtos.ResultCategoryDto>
+﻿@model List<SignalR.WebUI.DTOs.BookingDtos.ResultBookingDto>
 @{
-    ViewData["Title"] = "Kategori Listesi";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
- 
-<div class="container-fluid" >
-    <h4 class="page-title">Kategori Modülü</h4>
+
+
+<div class="container-fluid">
+    <h4 class="page-title">Rezervasyon Modülü</h4>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Kategori Listesi
-                    
-                    <a href="/Category/CreateCategory/"  class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
+                    <div class="card-title">
+                        Rezervasyon Listesi
+
+                        <a href="/Booking/CreateBooking/" class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-head-bg-primary mt-4 table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Id</th>
                                 <th scope="col">Ad</th>
-                                <th scope="col">Durum</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Kişi Sayısı</th>
                                 <th width="8%" scope="col">Seçenekler</th>
                             </tr>
                         </thead>
@@ -30,22 +34,24 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <th scope="row">@item.CategoryID</th>
-                                    <td>@item.CategoryID</td>
+                                    <th scope="row">@item.BookingID</th>
                                     <td>@item.Name</td>
-                                    <td>@(item.Status ? "Aktif" : "Pasif")</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td> 
+                                    <td>@item.Date.ToShortDateString()</td>
+                                    <td>@item.PersonCount</td>
                                     <td>
-                                        <a 
-                                           href="/Category/UpdateCategory/@item.CategoryID"
+                                        <a href="/Booking/UpdateBooking/@item.BookingID"
                                            class="btn btn-warning btn-sm" title="Düzenle">
                                             <i class="fa-solid fa-pen"></i>
-                                        </a>
+                                        </a> 
 
-                                        <a hidden  class="btn btn-info btn-sm" title="Detaylar">
+                                        <a href="/Booking/UpdateBooking/@item.BookingID"
+                                           hidden class="btn btn-info btn-sm" title="Detaylar">
                                             <i class="fa-solid fa-eye"></i>
-                                        </a>
+                                        </a> 
 
-                                        <a href="/Category/DeleteCategory/@item.CategoryID"
+                                        <a href="/Booking/DeleteBooking/@item.BookingID"
                                            class="btn btn-danger btn-sm" title="Sil">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </a>

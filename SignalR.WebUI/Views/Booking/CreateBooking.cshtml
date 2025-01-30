@@ -1,0 +1,51 @@
+﻿@model SignalR.WebUI.DTOs.BookingDtos.CreateBookingDto
+@{
+    ViewData["Title"] = "CreateBooking";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post"> 
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Yeni Kategori Ekle</div>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label asp-for="Name">Rezervasyon Sahibi</label>
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Email Adresi</label>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="example123@hotmail.com">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone">Telefon Numarası</label>
+                        <input asp-for="Phone" type="tel" class="form-control" placeholder="0512 345 67 89">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Date">Rezervasyon Tarihi</label>
+                        <input asp-for="Date" type="datetime-local" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="PersonCount">Kişi Sayısı</label>
+                        <input asp-for="PersonCount" type="number" class="form-control" placeholder="13">
+                        <small class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Oluştur</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

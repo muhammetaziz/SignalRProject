@@ -33,9 +33,9 @@ namespace SignalR.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            var client= _httpClientFactory.CreateClient();
-            var jsondata=JsonConvert.SerializeObject(createCategoryDto);
-            StringContent stringContent= new StringContent(jsondata, Encoding.UTF8, "application/json");
+            var client = _httpClientFactory.CreateClient();
+            var jsondata = JsonConvert.SerializeObject(createCategoryDto);
+            StringContent stringContent = new StringContent(jsondata, Encoding.UTF8, "application/json");
             var responceMessage = await client.PostAsync("https://localhost:7115/api/Category", stringContent);
             if (responceMessage.IsSuccessStatusCode)
             {
@@ -43,17 +43,45 @@ namespace SignalR.WebUI.Controllers
             }
             return View();
         }
-        [HttpDelete]
+        
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responceMessage = await client.DeleteAsync("https://localhost:7115/api/Category/" + id);
+            var responceMessage = await client.DeleteAsync($"https://localhost:7115/api/Category/{id}");
             if (responceMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
+
+        [HttpGet] 
+        public async Task<IActionResult> UpdateCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responceMessage = await client.GetAsync($"https://localhost:7115/api/Category/{id}");
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responceMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        [HttpPost] 
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsondata = JsonConvert.SerializeObject(updateCategoryDto);
+            StringContent stringContent = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            var responceMessage = await client.PutAsync("https://localhost:7115/api/Category", stringContent);
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
 
     }
 }

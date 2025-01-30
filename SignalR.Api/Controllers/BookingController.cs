@@ -43,7 +43,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
             var value = _bookingService.TGetById(id);
@@ -74,7 +74,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _bookingService.TGetById(id);
