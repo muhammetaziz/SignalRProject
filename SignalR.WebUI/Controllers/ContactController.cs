@@ -48,7 +48,7 @@ namespace SignalR.WebUI.Controllers
             var responcemessage = await client.PutAsync("https://localhost:7115/api/Contact", stringContent);
             if (responcemessage.IsSuccessStatusCode)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new {id =2});
             }
             return View();
         }
