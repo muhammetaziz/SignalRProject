@@ -31,8 +31,7 @@ namespace SignalR.Api.Controllers
         public IActionResult GetProductWithCategory()
         {
             var value = _mapper.Map<List<ResultProductWithCategory>>(_productService.TGetProductWithCategory());
-            return Ok(value);
-
+            return Ok(value); 
         }
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProduct)
@@ -53,7 +52,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetById(id);
@@ -85,7 +84,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetById(id);

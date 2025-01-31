@@ -1,0 +1,64 @@
+﻿@model SignalR.WebUI.DTOs.FeatureDtos.UpdateFeatureDto
+@{
+    ViewData["Title"] = "UpdateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Öne Çıkanları Güncelle</div>
+                </div>
+                <div class="card-body"> 
+                    <div hidden class="form-group">
+                        <label for="email">Email</label>
+                        <input asp-for="FeatureID" type="text" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Başlık 1</label>
+                        <input asp-for="Title1" type="text" class="form-control" placeholder="Başlık 1">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Başlık 2</label>
+                        <input asp-for="Title2" type="tel" class="form-control" placeholder="Başlık 2">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Başlık 3</label>
+                        <input asp-for="Title3" type="text" class="form-control" placeholder="Başlık 3">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Açıklama 1</label>
+                        <textarea asp-for="Description1" type="text" class="form-control" placeholder="Açıklama 1"></textarea>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Açıklama 2</label>
+                        <textarea asp-for="Description2" type="text" class="form-control" placeholder="Açıklama 2"></textarea>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Açıklama 3</label>
+                        <textarea asp-for="Description3" type="text" class="form-control" placeholder="Açıklama 3"></textarea>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageURL">Resim</label>
+                        <input  asp-for="ImageURL" type="text" class="form-control">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                   
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Güncelle</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

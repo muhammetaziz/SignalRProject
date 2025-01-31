@@ -17,20 +17,20 @@ namespace SignalR.WebUI.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7115/api/Contact/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7115/api/Featured/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<ResultFeatureDto>(jsonData);
+                return View(values);
             }
             return View();
-        }
-
+        } 
         [HttpGet]
         public async Task<IActionResult> UpdateFeature(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responceMessage = await client.GetAsync($"https://localhost:7115/api/Contact/{id}");
+            var responceMessage = await client.GetAsync($"https://localhost:7115/api/Featured/{id}");
             if (responceMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responceMessage.Content.ReadAsStringAsync();
@@ -45,7 +45,7 @@ namespace SignalR.WebUI.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateFeatureDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7115/api/Contact", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7115/api/Featured", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index), new { id = 1 });

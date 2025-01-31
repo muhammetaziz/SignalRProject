@@ -13,7 +13,7 @@ namespace SignalR.WebUI.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-
+       
         public async Task<IActionResult> Index(int id)
         {
             var client = _httpClientFactory.CreateClient();

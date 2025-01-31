@@ -1,6 +1,7 @@
 ﻿@model SignalR.WebUI.DTOs.FeatureDtos.ResultFeatureDto
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Öne Çıkanlar";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 <div class="container-fluid">
@@ -29,7 +30,7 @@
                     </ul>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="/Feature/UpdateFeature/@Model.FeatureID" class="btn btn-warning">
+                    <a href="/Feature/UpdateFeature/1" class="btn btn-warning">
                         <i class="fas fa-pen"></i> Düzenle
                     </a>
                 </div>

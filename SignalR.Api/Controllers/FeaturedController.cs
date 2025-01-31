@@ -23,7 +23,7 @@ namespace SignalR.Api.Controllers
         [HttpGet]
         public IActionResult ListFeature()
         {
-            var result =_mapper.Map<List<ResultFeatureDto>> (_featureService.TGetListAll());
+            var result = _mapper.Map<List<ResultFeatureDto>>(_featureService.TGetListAll());
             return Ok(result);
         }
         [HttpPost]
@@ -46,7 +46,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var value = _featureService.TGetById(id);
@@ -78,7 +78,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _featureService.TGetById(id);

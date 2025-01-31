@@ -1,0 +1,51 @@
+﻿@model SignalR.WebUI.DTOs.ProductDtos.CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Yeni Ürün Ekle</div>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label asp-for="ProductName">Ürün Adı</label>
+                        <input asp-for="ProductName" type="text" class="form-control" placeholder="Ürün Adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageURL">Ürün Görseli</label>
+                        <input asp-for="ImageURL" type="text" class="form-control" placeholder="Ürün Görseli">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Ürün Açıklaması</label>
+                        <input asp-for="Description" type="tel" class="form-control" placeholder="Ürün Açıklaması">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price">Fiyat</label>
+                        <input asp-for="Price" type="number" class="form-control" placeholder="Fiyat">
+                        <small class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input asp-for="ProductStatus" class="form-check-input" type="checkbox">
+                            <span class="form-check-sign">Ürün durumu Aktif/Pasif</span>
+                        </label>
+                    </div>
+
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Oluştur</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
