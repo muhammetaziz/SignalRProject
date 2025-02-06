@@ -1,9 +1,8 @@
-﻿@model SignalR.WebUI.DTOs.ContactDtos.UpdateContactDto
+﻿@model SignalR.WebUI.DTOs.ContactDtos.CreateContactDto
 @{
-    ViewData["Title"] = "UpdateContact";
+    ViewData["Title"] = "CreateContact";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-
 
 <div class="row">
     <div class="col-md-12">
@@ -11,15 +10,9 @@
 
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">İletişim güncelle</div>
+                    <div class="card-title">İletişim ekle</div>
                 </div>
-                <div class="card-body">
-
-                    <div hidden class="form-group">
-                        <label for="email">Email</label>
-                        <input  asp-for="ContactID" type="text" class="form-control">
-                        <small class="form-text text-muted"></small>
-                    </div>
+                <div class="card-body">  
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input asp-for="ContactEmail" type="text" class="form-control" placeholder="Email">
@@ -43,8 +36,8 @@
 
                 </div>
                 <div class="card-action">
-                    <button type="submit" class="btn btn-success">Güncelle</button>
-                    <a href="/Contact/Index/6" class="btn btn-danger">İptal</a>
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                    <a href="/Contact/Index/10" class="btn btn-danger">İptal</a>
                 </div>
             </div>
         </form>

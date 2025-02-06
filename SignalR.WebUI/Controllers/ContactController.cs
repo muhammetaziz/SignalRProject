@@ -22,6 +22,10 @@ namespace SignalR.WebUI.Controllers
             {
                 var jsonData = await responceMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<ResultContactDto>(jsonData);
+                if (values==null)
+                {
+                    return RedirectToAction(nameof(UpdateContact));
+                }
                 return View(values);
             }
             return View();
@@ -49,6 +53,24 @@ namespace SignalR.WebUI.Controllers
             if (responcemessage.IsSuccessStatusCode)
             {
                 return RedirectToAction(nameof(Index), new {id =2});
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult CreateContact()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateContact(CreateContactDto createContactDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsondata = JsonConvert.SerializeObject(createContactDto);
+            StringContent stringContent = new StringContent(jsondata, Encoding.UTF8, "application/json");
+            var responceMessage = await client.PostAsync("https://localhost:7115/api/Contact", stringContent);
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
             }
             return View();
         }

@@ -41,8 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="CategoryID">Kategori Seçiniz</label> 
-                        @Html.DropDownListFor(x => x.CategoryID, new SelectList(ViewBag.v, "CategoryID", "Name"), new { @class = "form-control" })
-                        @Html.DropDownListFor(())
+                        @Html.DropDownListFor(x => x.CategoryID, (List < SelectListItem >) ViewBag.v, new {@class="form-control"})
                     </div>
 
 

@@ -1,0 +1,64 @@
+﻿@model List<SignalR.WebUI.DTOs.TestimonialDtos.ResultTestimonialDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+<div class="container-fluid">
+    <h4 class="page-title">Referans Modülü</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Referans Listesi
+                        <a href="/Testimonial/CreateTestimonial/" class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-head-bg-primary mt-4 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Görsel</th>
+                                <th scope="col">Adı</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Yorum</th>
+                                <th scope="col">Durum</th>
+                                <th width="10%" scope="col">Seçenekler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.TestimonialID</th>
+                                    <td><img src="@item.ImageURL" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Comment</td>
+                                    <td>@(item.Status ? "Aktif" : "Pasif")</td>
+                                    <td>
+                                        <a href="/Testimonial/UpdateTestimonial/@item.TestimonialID"
+                                           class="btn btn-warning btn-sm" title="Düzenle">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+
+                                        <a href="/Testimonial/DetailsTestimonial/@item.TestimonialID"
+                                           class="btn btn-info btn-sm" title="Detaylar">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+
+                                        <a href="/Testimonial/DeleteTestimonial/@item.TestimonialID"
+                                           class="btn btn-danger btn-sm" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
