@@ -31,14 +31,14 @@ namespace SignalR.Api.Controllers
         public IActionResult GetProductWithCategory()
         {
             var value = _mapper.Map<List<ResultProductWithCategory>>(_productService.TGetProductWithCategory());
-            return Ok(value); 
+            return Ok(value);
         }
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProduct)
         {
             Product product = new()
             {
-                CategoryID = 9,
+                CategoryID = createProduct.CategoryID,
                 ProductName = createProduct.ProductName,
                 Price = createProduct.Price,
                 Description = createProduct.Description,
@@ -69,7 +69,7 @@ namespace SignalR.Api.Controllers
         {
             Product product = new()
             {
-                CategoryID = 9,
+                CategoryID = updateProduct.CategoryID,
                 ProductID = updateProduct.ProductID,
                 ProductName = updateProduct.ProductName,
                 Price = updateProduct.Price,

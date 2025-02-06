@@ -8,6 +8,8 @@
         public double Price { get; set; }
         public string ImageURL { get; set; }
         public bool ProductStatus { get; set; }
-          
+        public int CategoryID { get; set; }
+
+
     }
 }

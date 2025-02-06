@@ -23,10 +23,10 @@
                                 <th scope="col">Görsel</th>
                                 <th scope="col">Ürün</th>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Açıklama</th>
+                                @*<th scope="col">Açıklama</th>*@
                                 <th scope="col">Fiyat</th>
                                 <th scope="col">Durum</th>
-                                <th width="8%" scope="col">Seçenekler</th>
+                                <th width="10%" scope="col">Seçenekler</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,7 +37,7 @@
                                     <td><img src="@item.ImageURL" /></td>
                                     <td>@item.ProductName</td>
                                     <td>@item.CategoryName</td>
-                                    <td>@item.Description</td>
+                                    @*<td>@item.Description</td>*@
                                     <td>@item.Price .00</td>
                                     <td>@(item.ProductStatus ? "Aktif" : "Pasif")</td>
                                     <td>
@@ -46,7 +46,7 @@
                                             <i class="fa-solid fa-pen"></i>
                                         </a>
 
-                                        <a href="/Product/UpdateProduct/@item.ProductID"
+                                        <a href="/Product/DetailsProduct/@item.ProductID"
                                            class="btn btn-info btn-sm" title="Detaylar">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
