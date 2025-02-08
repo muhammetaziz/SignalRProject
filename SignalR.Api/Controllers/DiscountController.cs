@@ -43,7 +43,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _discountService.TGetById(id);
@@ -73,7 +73,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _discountService.TGetById(id);

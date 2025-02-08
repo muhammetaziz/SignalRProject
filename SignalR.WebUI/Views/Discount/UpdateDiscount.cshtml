@@ -1,0 +1,48 @@
+﻿@model SignalR.WebUI.DTOs.DiscountDtos.UpdateDiscountDto
+@{
+    ViewData["Title"] = "UpdateDiscount";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Yeni Kategori Ekle</div>
+                </div>
+                <div class="card-body">
+                    <div hidden class="form-group">
+                        <label for="email">Başlık</label>
+                        <input asp-for="DiscountID" type="text" class="form-control" placeholder="Başlık">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Başlık</label>
+                        <input asp-for="Title" type="text" class="form-control" placeholder="Başlık">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Oran</label>
+                        <input asp-for="Amount" type="text" class="form-control" placeholder="Oran">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Resim Yolu</label>
+                        <input asp-for="ImageURL" type="text" class="form-control" placeholder="Resim Yolu">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Açıklama</label>
+                        <textarea asp-for="Description" type="text" class="form-control" placeholder="Açıklama"></textarea>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

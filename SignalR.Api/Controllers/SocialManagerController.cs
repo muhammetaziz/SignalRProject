@@ -42,7 +42,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);
@@ -70,7 +70,7 @@ namespace SignalR.Api.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialMediaService.TGetById(id);
