@@ -1,0 +1,39 @@
+﻿@model SignalR.WebUI.DTOs.AboutDtos.CreateAboutDto
+@{
+    ViewData["Title"] = "CreateAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Yeni Hakkımızda Ekle</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="email">Başlık</label>
+                        <input asp-for="Title" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Resim Yolu</label>
+                        <input asp-for="ImageURL" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Açıklama</label>
+                        <input asp-for="Description" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

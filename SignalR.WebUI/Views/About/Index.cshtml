@@ -1,47 +1,59 @@
-﻿@model List< SignalR.WebUI.DTOs.AboutDtos.ResultAboutDto>
+﻿@model List<SignalR.WebUI.DTOs.AboutDtos.ResultAboutDto>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
+
 <div class="container-fluid">
-    <h4 class="page-title">İletişim Modülü</h4>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg border-0 rounded">
-                <div class="card-header bg-primary text-white text-center">
-                    <h5 class="mb-0"><i class="fas fa-address-book"></i> İletişim Bilgileri</h5>
+    <h4 class="page-title">Hakkımızda Modülü</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Hakkımızda Listesi
+
+                        <a href="/About/CreateAbout/" class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        @foreach (var item in Model)
-                        {
-
-                        <li hidden class="list-group-item">
-                            <i class="fas fa-user"></i> <strong>Ad:</strong> @item.AboutID
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-envelope"></i> <strong>Email:</strong> @item.ImageURL
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-phone"></i> <strong>Telefon:</strong> @item.AboutID
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-info-circle"></i> <strong>Açıklama:</strong> @item.Title
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-map-marker-alt"></i> <strong>Konum:</strong> @item.Description
-                        </li>
-                        }
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="/Contact/UpdateContact/2" class="btn btn-warning">
-                        <i class="fas fa-pen"></i> Düzenle
-                    </a>
+                    <table class="table table-head-bg-primary mt-4 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Başlık</th>
+                                <th scope="col">Açıklama</th>
+                                <th width="8%" scope="col">Seçenekler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.ImageURL</th>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>
+                                        <a href="/About/UpdateAbout/@item.AboutID"
+                                           class="btn btn-warning btn-sm" title="Düzenle">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a hidden class="btn btn-info btn-sm" title="Detaylar">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a href="/About/DeleteAbout/@item.AboutID"
+                                           class="btn btn-danger btn-sm" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> 
