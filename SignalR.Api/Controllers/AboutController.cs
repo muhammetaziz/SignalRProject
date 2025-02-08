@@ -32,7 +32,7 @@ namespace SignalR.Api.Controllers
                 Description = createAbout.Description,
                 ImageURL = createAbout.ImageURL,
                 Title = createAbout.Title
-                
+
             };
             if (ModelState.IsValid)
             {
@@ -42,7 +42,7 @@ namespace SignalR.Api.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var value = _aboutService.TGetById(id);
@@ -73,7 +73,7 @@ namespace SignalR.Api.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var value = _aboutService.TGetById(id);
