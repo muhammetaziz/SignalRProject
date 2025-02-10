@@ -1,43 +1,97 @@
-﻿@model SignalR.WebUI.DTOs.ContactDtos.ResultContactDto
+﻿@model List<SignalR.WebUI.DTOs.ContactDtos.ResultContactDto>
 @{
     ViewData["Title"] = "İletişim";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
- 
 
 <div class="container-fluid">
     <h4 class="page-title">İletişim Modülü</h4>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg border-0 rounded">
-                <div class="card-header bg-primary text-white text-center"> 
-                    <h5 class="mb-0"><i class="fas fa-address-book"></i> İletişim Bilgileri</h5>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        İletişim Listesi
+                        <a href="/Contact/CreateContact/" class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li hidden class="list-group-item">
-                            <i class="fas fa-user"></i> <strong>Ad:</strong> @Model.ContactID
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-envelope"></i> <strong>Email:</strong> @Model.ContactEmail
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-phone"></i> <strong>Telefon:</strong> @Model.Phone
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-info-circle"></i> <strong>Açıklama:</strong> @Model.FooterDescription
-                        </li>
-                        <li class="list-group-item">
-                            <i class="fas fa-map-marker-alt"></i> <strong>Konum:</strong> @Model.Location
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="/Contact/UpdateContact/2" class="btn btn-warning">
-                        <i class="fas fa-pen"></i> Düzenle
-                    </a>
+                    <table class="table table-head-bg-primary mt-4 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Footer Açıklama</th>
+                                <th scope="col">Telefon</th>
+                                <th scope="col">Lokasyon</th>
+                                <th width="8%" scope="col">Seçenekler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.ContactID</th>
+                                    <td> @item.ContactEmail"  </td>
+                                    <td>@item.FooterDescription</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Location</td>
+                                    <td>
+                                        <a href="/Contact/UpdateContact/@item.ContactID"
+                                           class="btn btn-warning btn-sm" title="Düzenle">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+
+                                         
+
+                                        <a href="/Contact/DeleteContact/@item.ContactID"
+                                           class="btn btn-danger btn-sm" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@*<div class="container-fluid">
+        <h4 class="page-title">İletişim Modülü</h4>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg border-0 rounded">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h5 class="mb-0"><i class="fas fa-address-book"></i> İletişim Bilgileri</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li hidden class="list-group-item">
+                                <i class="fas fa-user"></i> <strong>Ad:</strong> @Model.ContactID
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-envelope"></i> <strong>Email:</strong> @Model.ContactEmail
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-phone"></i> <strong>Telefon:</strong> @Model.Phone
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-info-circle"></i> <strong>Açıklama:</strong> @Model.FooterDescription
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-map-marker-alt"></i> <strong>Konum:</strong> @Model.Location
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="/Contact/UpdateContact/2" class="btn btn-warning">
+                            <i class="fas fa-pen"></i> Düzenle
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

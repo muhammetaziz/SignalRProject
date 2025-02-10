@@ -46,5 +46,44 @@ namespace SignalR.WebUI.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteTestimonial(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responceMessage = await client.DeleteAsync($"https://localhost:7115/api/Testimonial/{id}");
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> UpdateTestimonial(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responceMessage = await client.GetAsync($"https://localhost:7115/api/Testimonial/{id}");
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responceMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateTestimonialDto>(jsonData);
+                return View(value);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialDto updateTestimonialDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateTestimonialDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responceMessage = await client.PutAsync("https://localhost:7115/api/Testimonial", stringContent);
+            if (responceMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
     }
 }

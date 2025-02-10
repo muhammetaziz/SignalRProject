@@ -1,47 +1,65 @@
-﻿@model SignalR.WebUI.DTOs.FeatureDtos.ResultFeatureDto
+﻿@model List<SignalR.WebUI.DTOs.FeatureDtos.ResultFeatureDto>
 
 @{
     ViewData["Title"] = "Öne Çıkanlar";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-@if (Model != null)
-{
-    <div class="container-fluid">
-        <h4 class="page-title">Özellikler</h4>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card shadow-lg border-0 rounded">
 
-                    <img src="@Model.ImageURL" class="card-img-top rounded-top" alt="Feature Image">
-
-                    <div class="card-body">
-                        <h5 class="card-title text-center"><i class="fas fa-star"></i> Özellikler</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <strong>@Model.Title1</strong>
-                                <p class="text-muted mb-0">@Model.Description1</p>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>@Model.Title2</strong>
-                                <p class="text-muted mb-0">@Model.Description2</p>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>@Model.Title3</strong>
-                                <p class="text-muted mb-0">@Model.Description3</p>
-                            </li>
-                        </ul>
+<div class="container-fluid">
+    <h4 class="page-title">Öne Çıkan Modülü</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        Öne Çıkanlar Listesi
+                        <a href="/Feature/CreateFeature/" class="btn btn-success btn-sm float-right" title="Sil"> <i class="fa-sharp fa-solid fa-plus"></i>  Yeni</a>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="/Feature/UpdateFeature/1" class="btn btn-warning">
-                            <i class="fas fa-pen"></i> Düzenle
-                        </a>
-                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-head-bg-primary mt-4 table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Resim</th>
+                                <th scope="col">Açıklama 1</th>
+                                <th scope="col">Açıklama 2</th>
+                                <th scope="col">Açıklama 3</th>
+                                <th scope="col">Başlık 1</th>
+                                <th scope="col">Başlık 2</th>
+                                <th scope="col">Başlık 3</th>
+                                <th width="8%" scope="col">Seçenekler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FeatureID</td>
+                                    <td>@item.ImageURL</td>
+                                    <th>@item.Description1</th>
+                                    <td>@item.Description2"</td>
+                                    <td>@item.Description3</td>
+                                    <td>@item.Title1</td>
+                                    <td>@item.Title2</td>
+                                    <td>@item.Title3</td>
+                                    <td>
+                                        <a href="/Feature/UpdateFeature/@item.FeatureID"
+                                           class="btn btn-warning btn-sm" title="Düzenle">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                         
+                                        <a href="/Feature/DeleteFeature/@item.FeatureID"
+                                           class="btn btn-danger btn-sm" title="Sil">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-}
-else
-{
-    <p>Bilgi Bulunamadı</p>
-}
+</div>

@@ -1,0 +1,54 @@
+﻿@model SignalR.WebUI.DTOs.TestimonialDtos.UpdateTestimonialDto
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">   
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Referans Güncelle</div>
+                </div>
+                <div class="card-body">  
+                    <div hidden class="form-group">
+                        <label for="email">Referans Adı</label>
+                        <input asp-for="TestimonialID" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Referans Adı</label>
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Profil Fotografı</label>
+                        <input asp-for="ImageURL" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Tıtle</label>
+                        <input asp-for="Title" type="text" class="form-control" placeholder="Kategori adı">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Yorum</label>
+                        <textarea asp-for="Comment" type="text" class="form-control" placeholder="Kategori adı"></textarea>
+                        <small id="emailHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input asp-for="Status" class="form-check-input" type="checkbox">
+                            <span class="form-check-sign">Kategori durumu Aktif/Pasif</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-success">Ekle</button>
+                    <button asp-action="Index" class="btn btn-danger">İptal</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

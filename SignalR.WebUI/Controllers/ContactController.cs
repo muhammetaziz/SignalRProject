@@ -14,18 +14,14 @@ namespace SignalR.WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
        
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responceMessage = await client.GetAsync($"https://localhost:7115/api/Contact/{id}");
+            var responceMessage = await client.GetAsync("https://localhost:7115/api/Contact/");
             if (responceMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responceMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultContactDto>(jsonData);
-                if (values==null)
-                {
-                    return RedirectToAction(nameof(UpdateContact));
-                }
+                var values = JsonConvert.DeserializeObject<List<ResultContactDto>>(jsonData);
                 return View(values);
             }
             return View();
